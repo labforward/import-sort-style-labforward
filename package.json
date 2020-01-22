@@ -1,0 +1,7 @@
+{
+  "name": "import-sort-style-labforward",
+  "description": "An import-sort style that groups and sorts by module respecting React modules",
+  "main": "src/index.js",
+  "license": "MIT",
+  "private": true
+}
