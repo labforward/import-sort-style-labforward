@@ -17,6 +17,7 @@ function importSort(styleApi) {
     isAbsoluteModule,
     isNodeModule,
     isRelativeModule,
+    member,
     moduleName,
     naturally,
     unicode
@@ -54,7 +55,7 @@ function importSort(styleApi) {
     // import … from "fs"; # native node modules
     {
       match: isNodeModule,
-      sort: moduleName(naturally),
+      sort: member(naturally),
       sortNamedMembers: alias(unicode)
     },
     { separator: true },
@@ -69,7 +70,7 @@ function importSort(styleApi) {
     // import uniq from 'lodash/uniq'; # modules from node_modules directory
     {
       match: isFromNodeModules,
-      sort: moduleName(naturally),
+      sort: member(naturally),
       sortNamedMembers: alias(unicode)
     },
     { separator: true },
@@ -77,7 +78,7 @@ function importSort(styleApi) {
     // import … from "foo"; # modules with absolute path
     {
       match: isAbsoluteModule,
-      sort: moduleName(naturally),
+      sort: member(naturally),
       sortNamedMembers: alias(unicode)
     },
     { separator: true },
@@ -86,7 +87,7 @@ function importSort(styleApi) {
     // import … from "../foo";
     {
       match: isRelativeModule,
-      sort: [dotSegmentCount, moduleName(naturally)],
+      sort: [dotSegmentCount, member(naturally)],
       sortNamedMembers: alias(unicode)
     },
     { separator: true }
